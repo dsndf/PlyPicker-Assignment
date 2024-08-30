@@ -1,7 +1,6 @@
 import { connectDatabase } from "@/db/connectDb";
 import { getAuthUser } from "@/middlewares/getAuthUser";
 import { productCollection } from "@/models/Product";
-import { ErrorHandler } from "@/utils/errorHandler";
 import { errorResponse } from "@/utils/errorResponse";
 import { NextRequest, NextResponse } from "next/server";
 

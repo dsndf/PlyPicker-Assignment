@@ -29,7 +29,9 @@ const ProductCard = ({ product }: Props) => {
       <CardFooter className="text-small justify-between items-start">
         <div>
           <b>{product.productName} </b>
-          <p className="mt-1 text-gray-500">{product.productDescription}</p>
+          <p className="mt-1 text-gray-500">
+            {product.productDescription.split(" ").slice(0, 3).join(" ")}...
+          </p>
         </div>
         <p className="text-default-500">{product.productPrice} ₹</p>
       </CardFooter>

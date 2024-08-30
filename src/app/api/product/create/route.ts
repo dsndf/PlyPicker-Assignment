@@ -1,16 +1,15 @@
 import { connectDatabase } from "@/db/connectDb";
-import { getSessionUser } from "@/middlewares/getAuthUser";
+import { getAuthUser } from "@/middlewares/getAuthUser";
 import { productCollection } from "@/models/Product";
 import { errorResponse } from "@/utils/errorResponse";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
- 
     const data = await req.json();
-    // const user = await getSessionUser("admin");   
+    const user = await getAuthUser(req, "admin");
     await connectDatabase();
-    const product = await productCollection.create({ admin:"66d02bdbc1d31abd4d0ecbe0", ...data });
+    const product = await productCollection.create({ admin: user.id, ...data });
     return NextResponse.json({ success: true, product });
   } catch (error) {
     return errorResponse(error as Error);

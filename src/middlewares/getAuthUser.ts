@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
 import { JWT_SECRET } from "@/config/settings";
 import { ErrorHandler } from "@/utils/errorHandler";
 import { getToken } from "next-auth/jwt";

@@ -1,5 +1,5 @@
 import { imgDb } from "@/firebase/firebaseConfig";
-import { randomBytes, randomUUID } from "crypto";
+import { randomBytes} from "crypto";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export const uploadProductImage = async (file: File): Promise<string> => {

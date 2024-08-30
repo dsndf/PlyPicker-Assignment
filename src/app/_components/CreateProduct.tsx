@@ -60,8 +60,6 @@ const CreateProduct = () => {
   });
 
   const submitHandler: SubmitHandler<InputType> = async (data) => {
-    alert("Called");
-    console.log({ data, imageFile });
     try {
       const uploadedUrl = await uploadProductImage(imageFile!);
       await axios.post(

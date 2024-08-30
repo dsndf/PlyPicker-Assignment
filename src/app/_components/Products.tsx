@@ -1,11 +1,10 @@
-import { BASE_URL } from "@/config/settings";
 import { productCollection } from "@/models/Product";
-import { Card, CardBody, CardFooter, Image, user } from "@nextui-org/react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+;
 import { connectDatabase } from "@/db/connectDb";
 import ProductCard, { Product } from "./ProductCard";
+import { authOptions } from "@/lib/authOptions";
 
 export default async function Products() {
   const session = await getServerSession(authOptions);

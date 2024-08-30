@@ -1,3 +1,4 @@
+
 import { JWT_SECRET } from "@/config/settings";
 import jwt, { JwtPayload } from "jsonwebtoken";
 type SignJWT = (userId: string) => string;
@@ -13,12 +14,12 @@ const jwtOptions: JWTOptions = {
 
 export const signJWT: SignJWT = (userId) => {
   console.log({ secret: process.env.JWT_TOKEN_SECRET });
-  const token = jwt.sign({ userId }, JWT_SECRET, jwtOptions);
+  const token = jwt.sign({ userId }, JWT_SECRET!, jwtOptions);
   return token;
 };
 export const verifyJWT: VerifyJWT = (token) => {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
+    const decoded = jwt.verify(token, JWT_SECRET!) as JwtPayload;
     if (!decoded?.userId) return null;
     return decoded.userId;
   } catch (error) {

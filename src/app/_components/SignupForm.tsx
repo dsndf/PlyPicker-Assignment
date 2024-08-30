@@ -4,8 +4,6 @@ import {
   EyeIcon,
   EyeSlashIcon,
   KeyIcon,
-  PhoneIcon,
-  UserIcon,
 } from "@heroicons/react/16/solid";
 import { toast } from "react-hot-toast";
 import { Button, Checkbox, Input, Link } from "@nextui-org/react";
