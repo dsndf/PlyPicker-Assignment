@@ -32,8 +32,7 @@ const FormSchema = z
       },
     }),
     role: z
-      .string()
-      .refine((val) => val !== "", { message: "Role is required" }),
+      .string({message:"Role is required"})
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Password ans confirm password doesn't match",
@@ -57,9 +56,13 @@ export const SignupForm = () => {
     try {
       console.log({ data });
       const { accepted, confirmPassword, ...user } = data;
-      await registerUser(user);
-      toast.success("Registerd successfylly");
-      router.replace("/login");
+      const res = await registerUser(user);
+      if (res.success) {
+        toast.success("Registerd successfylly");
+        router.replace("/login");
+      } else {
+        toast.error(res.error);
+      }
       return data;
     } catch (error) {
       console.log(error);
@@ -86,7 +89,6 @@ export const SignupForm = () => {
       <Input
         label="Password"
         type={isPassVisible ? "text" : "password"}
-
         startContent={<KeyIcon className="w-4" />}
         endContent={
           !isPassVisible ? (
@@ -122,6 +124,8 @@ export const SignupForm = () => {
               label="Select your role"
               onChange={field.onChange}
               onBlur={field?.onBlur}
+              errorMessage={errors.role?.message}
+              isInvalid={!!errors.role}
             >
               <Radio value="team-member">Team member</Radio>
               <Radio value="admin">Admin</Radio>

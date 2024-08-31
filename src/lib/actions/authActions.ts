@@ -1,18 +1,20 @@
 "use server";
 import { userCollection } from "@/models/User";
 import { connectDatabase } from "@/db/connectDb";
-import { ErrorHandler } from "@/utils/errorHandler";
-
+import { createServerAction, ServerActionError } from "./actions-utils";
 
 type RegisterUserParam = {
   email: string;
   password: string;
 };
 
-export const registerUser = async (user: RegisterUserParam) => {
-  await connectDatabase();
-  const isUser = await userCollection.findOne({ email: user.email });
-  if (isUser) throw new ErrorHandler("Account already exists", 409);
-  await userCollection.create(user);
-};
-
+export const registerUser = createServerAction(
+  async (user: RegisterUserParam) => {
+    console.log("SERVER ACTION");
+    await connectDatabase();
+    const isUser = await userCollection.findOne({ email: user.email });
+    console.log({ isUser });
+    if (isUser) throw new ServerActionError("Account already Exists");
+    await userCollection.create(user);
+  }
+);
