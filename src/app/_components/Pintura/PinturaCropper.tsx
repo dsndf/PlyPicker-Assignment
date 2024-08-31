@@ -1,8 +1,6 @@
 import { Button, Image, Input, useDisclosure } from "@nextui-org/react";
 import React, { useState } from "react";
-import { Control, Controller } from "react-hook-form";
-import { PinturaEditor } from "@pqina/react-pintura";
-import { getEditorDefaults } from "@pqina/pintura";
+
 
 import "@pqina/pintura/pintura.css";
 import "./index.module.css";

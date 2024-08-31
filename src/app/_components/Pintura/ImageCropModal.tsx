@@ -45,7 +45,6 @@ export default function ImageCropModal({
                   {...getEditorDefaults()}
                   src={image}
                   onProcess={(res) => {
-              
                     setInlineResult({
                       data: URL.createObjectURL(res.dest),
                       file: res.dest,

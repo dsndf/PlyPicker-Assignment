@@ -59,6 +59,7 @@ const SinginForm = ({ callbackUrl }: Props) => {
       />
       <Input
         label="Password"
+        type="password"
         startContent={<KeyIcon className="w-4" />}
         {...register("password")}
         isInvalid={!!errors.password}

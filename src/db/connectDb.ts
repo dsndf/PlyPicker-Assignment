@@ -7,9 +7,7 @@ const connection: Connection = {};
 export async function connectDatabase(): Promise<Connection | void> {
   if (connection.isDatabaseConnected) return;
   try {
-    const db = await mongoose.connect(
-      "mongodb://127.0.0.1:27017/NextJS-14-COMPLETE-AUTH"
-    );
+    const db = await mongoose.connect(process.env.MONGODB_URI as string);
     console.log("db called");
     connection.isDatabaseConnected = db.connections[0].readyState;
     return connection;
