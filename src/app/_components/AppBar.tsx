@@ -28,7 +28,7 @@ export default function AppBar() {
       </NavbarContent>
       <NavbarContent className="hidden md:flex gap-4" justify="center">
         <NavbarItem>
-          <LinkUi as={Link} href="/dashboard" aria-current="page">
+          <LinkUi as={Link} href="/dashboard" prefetch={false} aria-current="page">
             Dashboard
           </LinkUi>
         </NavbarItem>
