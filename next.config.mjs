@@ -3,6 +3,14 @@ import dotenv from 'dotenv';
 dotenv.config()
 
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://ply-picker-assignment-zeta.vercel.app/api/:path*', // Proxy to Backend
+      },
+    ];
+  },
   reactStrictMode: false,
   env:{
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY ,
