@@ -1,3 +1,5 @@
+
+import { firebaseConfigSettings } from "@/config/settings";
 import mongoose from "mongoose";
 
 export interface Connection {
@@ -5,6 +7,7 @@ export interface Connection {
 }
 const connection: Connection = {};
 export async function connectDatabase(): Promise<Connection | void> {
+  console.log({mongdb:process.env.MONGODB_URI,firebase:firebaseConfigSettings})
   if (connection.isDatabaseConnected) return;
   try {
     const db = await mongoose.connect(process.env.MONGODB_URI as string);

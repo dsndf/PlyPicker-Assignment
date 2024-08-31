@@ -17,6 +17,7 @@
     "axios": "^1.7.5",
     "bcrypt": "^5.1.1",
     "check-password-strength": "^2.0.10",
+    "dotenv": "^16.4.5",
     "firebase": "^10.13.0",
     "framer-motion": "^11.3.30",
     "jsonwebtoken": "^9.0.2",
