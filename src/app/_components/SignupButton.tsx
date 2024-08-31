@@ -66,7 +66,7 @@ const SignupButton = () => {
       )}
       <NavbarMenu className="block md:hidden">
         <NavbarMenuItem>
-          <LinkUi as={Link} className="w-full" href="/dashboard" size="lg">
+          <LinkUi as={Link} prefetch={false} className="w-full" href="/dashboard" size="lg">
             Dashboard
           </LinkUi>
           {!session?.user && (
