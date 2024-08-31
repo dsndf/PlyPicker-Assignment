@@ -13,7 +13,6 @@ import {
 import Link from "next/link";
 import { UserIcon } from "@heroicons/react/16/solid";
 import { usePathname, useRouter } from "next/navigation";
-import { effect } from "zod";
 
 const SignupButton = () => {
   const { data: session } = useSession();
