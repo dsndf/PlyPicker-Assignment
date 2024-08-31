@@ -1,5 +1,5 @@
 "use client";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 
 import {
@@ -13,16 +13,18 @@ import {
 import Link from "next/link";
 import { UserIcon } from "@heroicons/react/16/solid";
 import { usePathname, useRouter } from "next/navigation";
+import { effect } from "zod";
 
 const SignupButton = () => {
   const { data: session } = useSession();
   const pathname = usePathname();
   const router = useRouter();
-  console.log({ pathname, session });
-  if ((pathname === "/login" || pathname === "/signup") && session?.user?.id)
-    router.replace("/");
 
-  console.log(session);
+  useEffect(() => {
+    if ((pathname === "/login" || pathname === "/signup") && session?.user?.id)
+      router.replace("/");
+  }, [session]);
+
   return (
     <Fragment>
       {!session?.user ? (
